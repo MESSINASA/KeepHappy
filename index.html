@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理健康评测中心</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>心理健康评测中心</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="showHome()">首页</a></li>
+                <li><a href="#history" onclick="viewHistory()">历史记录</a></li>
+                <li><a href="#about" onclick="showAbout()">关于我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="about-container" style="display: none;">
+        <div class="about-content">
+            <h2>关于我们</h2>
+            <div class="social-links">
+                <a href="https://www.luogu.com.cn/user/1508079" target="_blank" class="social-link">
+                    <i class="platform-icon">洛谷</i>
+                    <span>访问我的洛谷主页</span>
+                </a>
+                <a href="https://blog.csdn.net/2404_87411071?spm=1000.2115.3001.5343" target="_blank" class="social-link">
+                    <i class="platform-icon">CSDN</i>
+                    <span>访问我的CSDN博客</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="test-list">
+            <h2>可用测评</h2>
+            <div class="test-grid">
+                <div class="test-card" data-test="comprehensive">
+                    <h3>综合心理评测</h3>
+                    <p>全面评估您的心理健康状态</p>
+                    <button onclick="startTest('comprehensive')">开始测评</button>
+                </div>
+            </div>
+            
+            <div id="history-overview" class="history-section">
+                <h2>最近测评</h2>
+                <div id="recent-tests"></div>
+                <button onclick="viewHistory()" class="view-all-btn">查看完整历史</button>
+            </div>
+        </section>
+
+        <div id="test-container" style="display: none;">
+            <h2 id="test-title"></h2>
+            <div id="question-container"></div>
+            <button id="submit-test" onclick="submitTest()">提交测评</button>
+        </div>
+
+        <div id="history-container" style="display: none;">
+            <h2>测评历史记录</h2>
+            <div class="chart-container" style="position: relative; height:400px; width:100%; margin: 20px 0;">
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="history-actions" style="margin-bottom: 20px;">
+                <button onclick="exportHistory()">导出历史记录</button>
+                <button onclick="clearHistory()" class="danger-btn">清空历史记录</button>
+                <button onclick="showHome()">返回首页</button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+    </main>
+
+    <script src="js/tests.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
